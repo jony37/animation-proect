@@ -31,6 +31,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+    overflow: hidden;
 }
 
 header {
@@ -51,6 +52,7 @@ header {
     font-size: 26px;
     font-weight: 700;
     letter-spacing: 1px;
+    animation: topToBottom 1s ease forwards;
 }
 
 span {
@@ -62,9 +64,13 @@ span {
 }
 
 .navlist a {
+    display: inline;
     font-size: var(--p-font);
     color: var(--text-color);
     padding: 10px 27px;
+    opacity: 0;
+    animation: slideAnimate 1s ease forwards;
+    animation-delay:calc(.2s * var(--a));
 }
 
 .navlist a:hover {
@@ -105,6 +111,7 @@ section {
 .home-content h1 {
     font-size: var(--big-font);
     font-weight: 700;
+    animation: leftToRight 1.5s ease forwards;
 }
 
 .home-content h3 {
@@ -112,6 +119,10 @@ section {
     font-weight: 700;
     color: var(--hover-color);
     margin-top: 14px;
+
+    position: relative;
+    text-shadow: var(--font-neon-text-shadow);
+    animation: neon-animation 1.5s ease-in-out infinite alternate,rightToLeft 1.5s ease forwards;
 }
 
 .home-content p {
@@ -140,6 +151,14 @@ section {
     width: 320px;
     margin: 1rem 0 2rem;
     margin-top: 24px;
+}
+
+.info-box1 .email-info {
+    animation: leftToRight 2s ease forwards;
+}
+
+.info-box1 .behance-info {
+    animation: rightToLeft 2s ease forwards;
 }
 
 .btn-box {
@@ -213,6 +232,12 @@ section {
 .btn-box a:nth-child(1){
     background-color: var(--hover-color);
     color: var(--bg-color);
+
+    animation: leftToRight 4s ease forwards;
+}
+
+.btn-box a:nth-child(2){
+    animation: rightToLeft 4s ease forwards;
 }
 
 .btn-box a:nth-child(1)::before {
@@ -235,6 +260,7 @@ section {
     width: 100%;
     max-width: 350px;
     height: auto;
+    animation: topToBottom ease 3s forwards;
 }
 
 .liquid-shape {
@@ -243,6 +269,7 @@ section {
     height: 100%;
     z-index: -1;
     top: 10%;
+    animation: bottomToTop ease 3s forwards;
 }
 
 .liquid-shape:nth-child(2){
@@ -256,3 +283,74 @@ section {
     }
 }
 
+@keyframes neon-animation {
+    from {
+        opacity: 1.0;
+        text-shadow: var(--font-neon-text-shadow);
+    }
+
+    to {
+        opacity: 0.6;
+        text-shadow: none;
+    }
+}
+
+@keyframes topToBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes  slideAnimate {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes leftToRight{
+    0% {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes rightToLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bottomToTop {
+    0% {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
